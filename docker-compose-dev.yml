@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  nginx:
+    restart: "no"
+  redis:
+    restart: "no"
+  db:
+    restart: "no"
+    ports:
+      - "127.0.0.1:5433:5432"
+  superset:
+    restart: "no"
+  superset-worker:
+    restart: "no"
+  superset-worker-beat:
+    restart: "no"
