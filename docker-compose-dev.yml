@@ -2,16 +2,32 @@ version: '3.8'
 
 services:
   nginx:
-    restart: "no"
+    restart: unless-stopped
+    networks:
+      - dw-unlp_network
   redis:
-    restart: "no"
+    restart: unless-stopped
+    networks:
+      - dw-unlp_network
   db:
-    restart: "no"
+    restart: unless-stopped
     ports:
       - "127.0.0.1:5433:5432"
+    networks:
+      - dw-unlp_network
   superset:
-    restart: "no"
+    restart: unless-stopped
+    networks:
+      - dw-unlp_network
   superset-worker:
-    restart: "no"
+    restart: unless-stopped
+    networks:
+      - dw-unlp_network
   superset-worker-beat:
-    restart: "no"
+    restart: unless-stopped
+    networks:
+      - dw-unlp_network
+
+networks:
+  dw-unlp_network:
+    external: true
